@@ -1,6 +1,8 @@
 import Foundation
 
 struct SwiftMelcepstrum {
+    //https://stackoverflow.com/questions/58995021/how-to-get-a-floating-point-number-interval-of-fixed-length-and-bounds-in-swift
+    // linspace in Swift is off by one from Python version, that is, use python_in - 1 for 3rd parameter.
     func linspace<T>(from start: T, through end: T, in samples: Int) -> StrideThrough<T>
         where T : FloatingPoint, T == T.Stride {
         return Swift.stride(from: start, through: end, by: (end - start) / T(samples))
@@ -15,7 +17,6 @@ struct SwiftMelcepstrum {
         let freqFFT = Array(linspace(from: 0, through: Float(sampleRate / 2), in: nFFT / 2))
         var filterBank: [[Double]] {
             var a = [[Double]](repeating: [Double](repeating: 0, count: sampleRate / 2 + 1), count: nMels)
-            print("filter bank size", a.count)
             // could do away with the matrix completely, or convert to sparse format.
             for filterIndex in 1..<(nMels + 1) {
                 for (freqIndex, freq) in freqFFT.enumerated() {
