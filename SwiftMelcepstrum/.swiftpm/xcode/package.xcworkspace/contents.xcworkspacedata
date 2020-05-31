@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:swift-melcepstrum.xcodeproj">
+      location = "container:../..">
    </FileRef>
 </Workspace>
