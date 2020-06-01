@@ -9,3 +9,7 @@ Note that the main difference here is that ```htk=False``` by default in librosa
 
 Here is the librosa source that I borrowed from: https://librosa.github.io/librosa/_modules/librosa/filters.html. They calculate the filters as an intersection of three line segments, which is why the code looks different from the code provided in the first link.
 
+The function ```SwiftMelcepstrum().spectrogramLibrosa(signal)``` is equivalent to ```librosa.core.spectrum._spectrogram(power=2, window="hann")``` for **one** window; in other words, it's just a FFT, not a true STFT. Will be adding that in the future.
+
+
+
