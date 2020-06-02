@@ -13,7 +13,11 @@ final class SwiftMelcepstrumTests: XCTestCase {
         let sampleRate = 44100
         let numFFT = 512
         
-        XCTAssertEqual(SwiftMelcepstrum().mel(sampleRate: sampleRate, nFFT: numFFT, nMels: numFilters).count, 40)
+        if #available(OSX 10.15, *) {
+            XCTAssertEqual(SwiftMelcepstrum().mel(sampleRate: sampleRate, nFFT: numFFT, nMels: numFilters).count, numFilters * (numFFT / 2 + 1))
+        } else {
+            // Fallback on earlier versions
+        }
     }
 
     static var allTests = [
