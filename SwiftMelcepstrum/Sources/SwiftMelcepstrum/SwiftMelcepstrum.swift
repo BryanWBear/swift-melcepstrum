@@ -32,10 +32,7 @@ struct SwiftMelcepstrum {
             }
             return a
         }
-        print(filterBank.count)
-        print(filterBank[0].count)
         let flatFilterBank = filterBank.reduce([], +)
-        print(flatFilterBank.count)
         return flatFilterBank
     }
     
